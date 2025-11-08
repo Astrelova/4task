@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайтик с ссылочками</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .links-list li {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-left: 3px solid #2575fc;
+            background-color: #f8f9fa;
+        }
+        
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        /* Стиль для областей карты-изображения */
+        area {
+            cursor: pointer;
+        }
+        
+        /* Подсветка при наведении на изображение с картой */
+        img[usemap] {
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        img[usemap]:hover {
+            border-color: #2575fc;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header с навигацией -->
+    <header>
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center py-3">
+                <div class="logo-title mb-3 mb-md-0">
+                    <img src="images/Logo.png" alt="Логотип" class="logo">
+                    <h1 class="h3 mb-0">Ссылочки</h1>
+                </div>
+                
+                <nav class="navbar navbar-expand-md p-0">
+                    <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#links-section">Ссылки</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#table-section">Таблица</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#form-section">Форма</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-4">
+        <!-- Секция ссылок -->
+        <section id="links-section" class="content-section p-3 p-md-4">
+            <h2 class="h4 mb-3">Список ссылок</h2>
+            <div class="table-responsive-custom">
+                <ol class="links-list list-unstyled">
+                    <li class="mb-2"><a href="http://kubsu.ru/" class="text-decoration-none">КубГу (http)</a></li>
+                    <li class="mb-2"><a href="https://kubsu.ru/" class="text-decoration-none">КубГу (https)</a></li>
+                    <li class="mb-2">
+                        <a href="https://kubsu.ru/" class="text-decoration-none">
+                            <img src="images/image.jpg" alt="КубГУ" class="img-fluid rounded">
+                        </a>
+                    </li>
+                    <li class="mb-2"><a href="/about" class="text-decoration-none">Внутренняя страница</a></li>
+                    <li class="mb-2"><a href="/" class="text-decoration-none">Главная</a></li>
+                    <li class="mb-2"><a href="#form-section" class="text-decoration-none">Ссылка на сегмент текущей страницы (Переход к форме)</a></li>
+                    <li class="mb-2"><a href="https://example.com/search?name=ivan&amp;age=20&amp;city=krasnodar" class="text-decoration-none">Ссылка с 3 параметрами</a></li>
+                    <li class="mb-2"><a href="https://example.com/page?id=123" class="text-decoration-none">Ссылка с id</a></li>
+                    <li class="mb-2"><a href="page.html" class="text-decoration-none">Страница в текущем каталоге</a></li>
+                    <li class="mb-2"><a href="about/page.html" class="text-decoration-none">Относительная ссылка на страницу в каталоге about</a></li>
+                    <li class="mb-2"><a href="../page.html" class="text-decoration-none">Относительная ссылка на страницу на уровень выше</a></li>
+                    <li class="mb-2"><a href="../../page.html" class="text-decoration-none">Относительная ссылка на страницу на два уровня выше</a></li>
+                    <li class="mb-2">
+                        <p class="mb-1">Тут текст, а внутри <a href="https://kubsu.ru/" class="text-decoration-none">контекстная ссылка</a>.</p>
+                    </li>
+                    <li class="mb-2"><a href="https://kubsu.ru/news" class="text-decoration-none">Ссылка на фрагмент</a></li>
+                    <li class="mb-2">
+                        <!-- КАРТА-ИЗОБРАЖЕНИЕ С КЛИКАБЕЛЬНЫМИ ОБЛАСТЯМИ -->
+                        <img src="images/image.jpg" alt="Карта-изображение с ссылками" width="224" height="168" usemap="#image-map" class="rounded">
+                        <map name="image-map">
+                            <area shape="rect" coords="0,0,112,84" href="https://kubsu.ru/" alt="КубГУ" title="Перейти на сайт КубГУ">
+                            <area shape="circle" coords="168,126,30" href="https://example.com" alt="Example" title="Перейти на Example.com">
+                        </map>
+                    </li>
+                    <li class="mb-2"><a href="" class="text-decoration-none">Ссылка с пустым href</a></li>
+                    <li class="mb-2"><a class="text-decoration-none">ссылка без href</a></li>
+                    <li class="mb-2"><a href="https://example.com" rel="nofollow" class="text-decoration-none">Запрещено для перехода поисковикам</a></li>
+                    <li class="mb-2"><a href="https://example.com" rel="nofollow" class="text-decoration-none">Запрещено для индексации</a></li>
+                    <li class="mb-2">
+                        <span class="d-block mb-1">Нумерованный список ссылок:</span>
+                        <ol class="mt-1">
+                            <li><a href="https://kubsu.ru/" title="Главная КубГУ" class="text-decoration-none">КубГу</a></li>
+                            <li><a href="https://example.com" title="Пример сайта" class="text-decoration-none">Example</a></li>
+                        </ol>
+                    </li>
+                    <li class="mb-2"><a href="ftp://user:password@ftp.example.com/file.txt" class="text-decoration-none">FTP с авторизацией</a></li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Секция таблицы -->
+        <section id="table-section" class="content-section p-3 p-md-4">
+            <h2 class="h4 mb-3">Таблица IT-компаний</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <caption class="caption-top">Список IT-компаний и используемых технологий</caption>
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Компания</th>
+                            <th scope="col">Сфера</th>
+                            <th scope="col">Технологии</th>
+                            <th scope="col">Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3">101</td>
+                            <td rowspan="3">TechSolutions</td>
+                            <td rowspan="3">Разработка ПО</td>
+                            <td>React</td>
+                            <td>Активна</td>
+                        </tr>
+                        <tr>
+                            <td>Node.js</td>
+                            <td>Активна</td>
+                        </tr>
+                        <tr>
+                            <td>MongoDB</td>
+                            <td>В разработке</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>DataAnalytics</td>
+                            <td>Аналитика</td>
+                            <td>Python</td>
+                            <td>Активна</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">103</td>
+                            <td rowspan="2">CloudServices</td>
+                            <td rowspan="2">Облачные решения</td>
+                            <td>AWS</td>
+                            <td>Активна</td>
+                        </tr>
+                        <tr>
+                            <td>Docker</td>
+                            <td>Тестирование</td>
+                        </tr>
+                        <tr>
+                            <td>104</td>
+                            <td>MobileDev</td>
+                            <td>Мобильные приложения</td>
+                            <td>Flutter</td>
+                            <td>Запуск</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">105</td>
+                            <td rowspan="3">AI Research</td>
+                            <td rowspan="3">Искусственный интеллект</td>
+                            <td>TensorFlow</td>
+                            <td>Исследование</td>
+                        </tr>
+                        <tr>
+                            <td>PyTorch</td>
+                            <td>Разработка</td>
+                        </tr>
+                        <tr>
+                            <td>OpenCV</td>
+                            <td>Тестирование</td>
+                        </tr>
+                        <tr>
+                            <td>106</td>
+                            <td>WebStudio</td>
+                            <td>Веб-разработка</td>
+                            <td>Vue.js</td>
+                            <td>Активна</td>
+                        </tr>
+                        <tr>
+                            <td>107</td>
+                            <td>Startup X</td>
+                            <td colspan="2">Проект закрыт</td>
+                            <td>Неактивна</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Секция формы с МАССИВОМ -->
+        <section id="form-section" class="content-section p-3 p-md-4">
+            <h2 class="h4 mb-3">Форма</h2>
+            <form action="#" method="post" id="main-form">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="fio" class="form-label">ФИО:</label>
+                        <input type="text" class="form-control" id="fio" name="fio" required>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="phone" class="form-label">Телефон:</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="+7(999)123-45-67" required>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="birthdate" class="form-label">Дата рождения:</label>
+                        <input type="date" class="form-control" id="birthdate" name="birthdate" required>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <legend class="form-label">Пол:</legend>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="gender-male" name="gender" value="male" required>
+                        <label class="form-check-label" for="gender-male">Мужской</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="gender-female" name="gender" value="female">
+                        <label class="form-check-label" for="gender-female">Женский</label>
+                    </div>
+                </div>
+                
+                <!-- МАССИВ ДЛЯ ЯЗЫКОВ ПРОГРАММИРОВАНИЯ -->
+                <div class="mb-3">
+                    <label for="languages" class="form-label">Любимые языки программирования (массив):</label>
+                    <select class="form-select" id="languages" name="languages[]" multiple size="5" required>
+                        <option value="pascal">Pascal</option>
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="php">PHP</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="haskell">Haskell</option>
+                        <option value="clojure">Clojure</option>
+                        <option value="prolog">Prolog</option>
+                        <option value="scala">Scala</option>
+                    </select>
+                    <div class="form-text">Для выбора нескольких языков удерживайте Ctrl (или Cmd на Mac)</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="bio" class="form-label">Биография:</label>
+                    <textarea class="form-control" id="bio" name="bio" rows="5" required></textarea>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="contract" name="contract" required>
+                        <label class="form-check-label" for="contract">С контрактом ознакомлен(а)</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p class="mb-0">© Anna Buival 2025</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript для работы с массивом языков -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Обработчик отправки формы
+            document.getElementById('main-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Получаем выбранные языки из массива
+                const languageSelect = document.getElementById('languages');
+                const selectedLanguages = Array.from(languageSelect.selectedOptions)
+                    .map(option => option.text);
+                
+                console.log('Массив выбранных языков:', selectedLanguages);
+                alert(`Форма отправлена! Выбранные языки: ${selectedLanguages.join(', ')}`);
+                
+                // Здесь обычно будет отправка формы на сервер
+                // this.submit();
+            });
+        });
+    </script>
+</body>
+</html>
